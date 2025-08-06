@@ -6,7 +6,7 @@ TrapLab is a Bash-based monitoring tool designed to help detect suspicious activ
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -31,11 +31,11 @@ You’ll be prompted to select which monitoring mode to run (SSH, Ping, HTTP, or
 
 ---
 
-## ⚠️ If You Get: `cannot execute: required file not found`
+## If You Get: `cannot execute: required file not found`
 
 This usually happens when Bash scripts are created or edited on Windows (which uses CRLF line endings).
 
-### ✅ Option 1: Use `dos2unix` (Recommended)
+### Option 1: Use `dos2unix` (Recommended)
 
 Install it:
 
@@ -57,7 +57,7 @@ chmod +x traplab.sh
 ./traplab.sh
 ```
 
-### ✅ Option 2: Use `sed` (Without Installing Anything)
+### Option 2: Use `sed` (Without Installing Anything)
 
 ```bash
 sed -i 's/\r$//' traplab.sh
@@ -67,7 +67,7 @@ chmod +x traplab.sh
 
 ---
 
-## 📁 Log Files
+## Log Files
 
 TrapLab saves logs in the `./logs` directory with timestamps:
 
@@ -89,7 +89,7 @@ Do **NOT** use it on machines or networks you do not own or explicitly have perm
 
 ---
 
-## 📌 License
+## License
 
 This project is licensed under the **Northeast Lakeview College (NLC) License**.  
 © 2025 Northeast Lakeview College, NightHax  
