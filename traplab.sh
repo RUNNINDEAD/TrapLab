@@ -18,22 +18,20 @@ INTERFACE="eth0"  # Default
 trap 'cleanup_and_exit' SIGINT
 
 cleanup_and_exit() {
-    echo -e "\n[EXIT] ShadowTrap stopped. Goodbye!"
+    echo -e "\n[EXIT] TrapLab stopped. Goodbye!"
     kill 0
     exit 0
 }
 
 print_banner() {
-echo "    _____ _               _            _______              "
-echo "   / ____| |             | |          |__   __|             "
-echo "  | (___ | |__   __ _  __| | _____      _| |_ __ __ _ _ __  "
-echo "   \___ \| '_ \ / _\ |/ _\ |/ _ \ \ /\ / / | '__/ _\ | '_ \ "
-echo "   ____) | | | | (_| | (_| | (_) \ V  V /| | | | (_| | |_) |"
-echo "  |_____/|_| |_|\__,_|\__,_|\___/ \_/\_/ |_|_|  \__,_| .__/ "
-echo "                                                    | |    "
-echo "                                                    |_|    "
+echo "  _____                _          _     "
+echo " |_   _| __ __ _ _ __ | |    __ _| |__  "
+echo "   | || '__/ _\` | '_ \| |   / _\` | '_ \ "
+echo "   | || | | (_| | |_) | |__| (_| | |_) |"
+echo "   |_||_|  \__,_| .__/|_____\__,_|_.__/ "
+echo "                |_|                     "
 echo ""
-echo "[ShadowTrap] Started at $(date '+%Y-%m-%d %H:%M:%S')"
+echo "[TrapLab] Started at $(date '+%Y-%m-%d %H:%M:%S')"
 echo "Monitoring interface: $INTERFACE"
 echo "Press [q] to quit anytime."
 echo ""
@@ -47,8 +45,8 @@ output() {
 }
 
 monitor_ssh() {
-    output "[ShadowTrap] Monitoring SSH logins... log: $SSH_LOG"
-    echo "[ShadowTrap] Started at $(date '+%Y-%m-%d %H:%M:%S')" >> "$SSH_LOG"
+    output "[TrapLab] Monitoring SSH logins... log: $SSH_LOG"
+    echo "[TrapLab] Started at $(date '+%Y-%m-%d %H:%M:%S')" >> "$SSH_LOG"
     tail -Fn0 /var/log/auth.log | \
     while read line ; do
         echo "$line" | grep "Accepted password\|Accepted publickey" | grep "ssh"
@@ -65,8 +63,8 @@ monitor_ssh() {
 }
 
 monitor_ping() {
-    output "[ShadowTrap] Monitoring ICMP (ping)... log: $PING_LOG"
-    echo "[ShadowTrap] Started at $(date '+%Y-%m-%d %H:%M:%S')" >> "$PING_LOG"
+    output "[TrapLab] Monitoring ICMP (ping)... log: $PING_LOG"
+    echo "[TrapLab] Started at $(date '+%Y-%m-%d %H:%M:%S')" >> "$PING_LOG"
     sudo tcpdump -i $INTERFACE -l -nn icmp | \
     while read line ; do
         TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
@@ -77,8 +75,8 @@ monitor_ping() {
 }
 
 monitor_http() {
-    output "[ShadowTrap] Monitoring HTTP requests... log: $HTTP_LOG"
-    echo "[ShadowTrap] Started at $(date '+%Y-%m-%d %H:%M:%S')" >> "$HTTP_LOG"
+    output "[TrapLab] Monitoring HTTP requests... log: $HTTP_LOG"
+    echo "[TrapLab] Started at $(date '+%Y-%m-%d %H:%M:%S')" >> "$HTTP_LOG"
     sudo tcpdump -i $INTERFACE -l -nn port 80 or port 443 | \
     while read line ; do
         TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
@@ -92,7 +90,7 @@ watch_quit() {
     while true; do
         read -n1 -s key
         if [[ $key = "q" ]]; then
-            echo -e "\n[EXIT] ShadowTrap stopped by user (q). Goodbye!"
+            echo -e "\n[EXIT] TrapLab stopped by user (q). Goodbye!"
             kill 0
             exit 0
         fi
