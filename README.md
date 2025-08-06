@@ -79,7 +79,7 @@ Each file logs events like failed login attempts, pings, and HTTP connections de
 
 ---
 
-## 🛡️ Use Responsibly
+## Use Responsibly
 
 TrapLab is intended for **educational** and **defensive security** purposes only.
 
