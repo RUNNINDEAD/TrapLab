@@ -86,6 +86,12 @@ TrapLab is intended for **educational** and **defensive security** purposes only
 Do **NOT** use it on machines or networks you do not own or explicitly have permission to monitor. Always follow ethical and legal guidelines.
 
 ---
+## Logs
+
+<img width="2846" height="1596" alt="image" src="https://github.com/user-attachments/assets/61bf8c2b-fcac-473c-b075-9dadef653158" />
+
+## Folders
+<img width="1028" height="274" alt="Folders" src="https://github.com/user-attachments/assets/e26f1b8e-869f-44ad-98cd-c9a6f74488fd" />
 
 ---
 
